@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">GithubSample</string>
+    <string name="no_data">no data.</string>
+    <string name="follower">Follower</string>
+    <string name="following">Following</string>
+    <string name="user_detail">User Detail</string>
+    <string name="repositories">Repositories</string>
+    <string name="network_error">Network Error.</string>
+    <string name="network_error_not_found">404 Not Found.</string>
+    <string name="network_error_connection">Network Connection Error</string>
+
+    <string name="transition_user_icon">transition_user_icon</string>
+    <string name="transition_user_root">transition_user_root</string>
+</resources>

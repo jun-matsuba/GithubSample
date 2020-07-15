@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto" android:id="@+id/nav_graph"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/topFragment">
+    <fragment
+        android:id="@+id/userDetailFragment"
+        android:name="com.example.matsubajun.githubsample.ui.detail.UserDetailFragment"
+        android:label="User"
+        tools:layout="@layout/fragment_user_detail">
+        <argument
+            android:name="extra_user_login"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_to_follow"
+            app:destination="@id/followFragment"
+            app:enterAnim="@anim/fragment_enter_anim"
+            app:popExitAnim="@anim/fragment_pop_exit_anim" />
+        <argument
+            android:name="extra_user_image"
+            app:argType="string"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/topFragment"
+        android:name="com.example.matsubajun.githubsample.ui.MainFragment"
+        android:label="Top"
+        tools:layout="@layout/fragment_main">
+        <argument
+            android:name="extra_user_login"
+            app:argType="string"
+            android:defaultValue="jun-matsuba" />
+        <action
+            android:id="@+id/action_to_detail"
+            app:destination="@id/userDetailFragment"
+            app:enterAnim="@anim/fragment_enter_anim"
+            app:popExitAnim="@anim/fragment_pop_exit_anim" />
+        <argument
+            android:name="extra_is_follow"
+            android:defaultValue="true"
+            app:argType="boolean" />
+    </fragment>
+    <fragment
+        android:id="@+id/followFragment"
+        android:name="com.example.matsubajun.githubsample.ui.MainFragment"
+        android:label="Follow"
+        tools:layout="@layout/fragment_main">
+        <argument
+            android:name="extra_user_login"
+            app:argType="string"
+            android:defaultValue="jun-matsuba" />
+        <action
+            android:id="@+id/action_to_detail"
+            app:destination="@id/userDetailFragment"
+            app:enterAnim="@anim/fragment_enter_anim"
+            app:popExitAnim="@anim/fragment_pop_exit_anim" />
+        <argument
+            android:name="extra_is_follow"
+            android:defaultValue="true"
+            app:argType="boolean" />
+    </fragment>
+</navigation>

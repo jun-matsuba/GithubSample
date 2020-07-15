@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <import type="com.example.matsubajun.githubsample.data.Status"/>
+
+        <variable
+            name="loadingResource"
+            type="com.example.matsubajun.githubsample.data.Resource" />
+
+    </data>
+
+    <ProgressBar
+        style="?android:attr/progressBarStyle"
+        app:visibleGone="@{loadingResource.status == Status.LOADING}"
+        android:id="@+id/progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        />
+
+</layout>

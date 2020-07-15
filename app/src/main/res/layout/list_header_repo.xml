@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="githubUser"
+            type="com.example.matsubajun.githubsample.domain.model.GithubUser" />
+
+        <variable
+            name="onFollowingClick"
+            type="android.view.View.OnClickListener" />
+
+        <variable
+            name="onFollowerClick"
+            type="android.view.View.OnClickListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="0dp">
+
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/icon"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:transitionName="user_image_transition"
+            app:imageUrl="@{githubUser.avatarUrl}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.20"
+            app:roundAsCircle="true" />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:text="@{githubUser.name}"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:visibleGone="@{githubUser.name != null}"
+            app:layout_constraintTop_toBottomOf="@id/icon" />
+
+        <TextView
+            android:id="@+id/company"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="12dp"
+            android:gravity="center"
+            android:text="@{githubUser.company}"
+            android:textSize="16sp"
+            app:visibleGone="@{githubUser.company != null}"
+            app:layout_constraintTop_toBottomOf="@id/name" />
+
+        <LinearLayout
+            android:id="@+id/follow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintTop_toBottomOf="@id/company">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/following" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/follower" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/follow_count"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginRight="8dp"
+            android:layout_marginLeft="8dp"
+            app:layout_constraintTop_toBottomOf="@id/follow">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@{githubUser.following + ``}"
+                app:onClickListener="@{onFollowingClick}"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@{githubUser.followers + ``}"
+                app:onClickListener="@{onFollowerClick}"/>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:padding="12dp"
+            android:textSize="14sp"
+            android:text="@string/repositories"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/follow_count" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
